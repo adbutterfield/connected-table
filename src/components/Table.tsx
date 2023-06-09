@@ -1,38 +1,16 @@
 import {
-  createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
+  ColumnDef,
 } from "@tanstack/react-table";
 
-type Pokemon = {
-  name: string;
-  url: string;
+type TableProps<T> = {
+  data: T[] | null;
+  columns: ColumnDef<T, any>[];
 };
 
-const columnHelper = createColumnHelper<Pokemon>();
-
-const columns = [
-  columnHelper.accessor((row) => row.name, {
-    id: "name",
-    cell: (info) => info.getValue(),
-    header: () => <span>NAME</span>,
-  }),
-  columnHelper.accessor((row) => row.url, {
-    id: "id",
-    cell: (info) =>
-      (info
-        .getValue()
-        .match(/https:\/\/pokeapi\.co\/api\/v2\/pokemon\/(\d+)\//) || [])[1],
-    header: () => <span>ID</span>,
-  }),
-];
-
-type TableProps = {
-  data: Pokemon[] | null;
-};
-
-const Table: React.FC<TableProps> = ({ data }) => {
+function Table<T>({ data, columns }: TableProps<T>) {
   const table = useReactTable({
     data: data || [],
     columns,
@@ -92,6 +70,6 @@ const Table: React.FC<TableProps> = ({ data }) => {
       </tfoot>
     </table>
   );
-};
+}
 
 export default Table;
