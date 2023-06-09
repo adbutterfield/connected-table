@@ -3,6 +3,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { TableBase, THead, Th, TBody, Td } from "./Table.styles";
 
 type TableProps<T> = {
   data: T[] | null;
@@ -17,57 +18,35 @@ function Table<T>({ data, columns }: TableProps<T>) {
   });
 
   return (
-    <table className="border-collapse table-auto w-full mt-8">
-      <thead className="bg-white dark:bg-slate-800">
+    <TableBase>
+      <THead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th
-                key={header.id}
-                className="border-b dark:border-slate-600 font-medium p-4 pl-8 pb-3 text-slate-400 dark:text-slate-200 text-left"
-              >
+              <Th key={header.id}>
                 {header.isPlaceholder
                   ? null
                   : flexRender(
                       header.column.columnDef.header,
                       header.getContext()
                     )}
-              </th>
+              </Th>
             ))}
           </tr>
         ))}
-      </thead>
-      <tbody className="bg-white dark:bg-slate-800">
+      </THead>
+      <TBody>
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td
-                key={cell.id}
-                className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"
-              >
+              <Td key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
+              </Td>
             ))}
           </tr>
         ))}
-      </tbody>
-      <tfoot>
-        {table.getFooterGroups().map((footerGroup) => (
-          <tr key={footerGroup.id}>
-            {footerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.footer,
-                      header.getContext()
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </tfoot>
-    </table>
+      </TBody>
+    </TableBase>
   );
 }
 
