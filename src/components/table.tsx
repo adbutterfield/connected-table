@@ -19,9 +19,12 @@ const columns = [
     header: () => <span>NAME</span>,
   }),
   columnHelper.accessor((row) => row.url, {
-    id: "url",
-    cell: (info) => info.getValue(),
-    header: () => <span>URL</span>,
+    id: "id",
+    cell: (info) =>
+      (info
+        .getValue()
+        .match(/https:\/\/pokeapi\.co\/api\/v2\/pokemon\/(\d+)\//) || [])[1],
+    header: () => <span>ID</span>,
   }),
 ];
 
