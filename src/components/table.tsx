@@ -39,14 +39,14 @@ const Table: React.FC<TableProps> = ({ data }) => {
     getCoreRowModel: getCoreRowModel(),
   });
   return (
-    <table className="border-collapse table-fixed w-full mt-8">
-      <thead>
+    <table className="border-collapse table-auto w-full mt-8">
+      <thead className="bg-white dark:bg-slate-800">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
               <th
                 key={header.id}
-                className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left"
+                className="border-b dark:border-slate-600 font-medium p-4 pl-8 pb-3 text-slate-400 dark:text-slate-200 text-left"
               >
                 {header.isPlaceholder
                   ? null
