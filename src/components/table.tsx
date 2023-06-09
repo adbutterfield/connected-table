@@ -38,6 +38,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
   return (
     <table className="border-collapse table-auto w-full mt-8">
       <thead className="bg-white dark:bg-slate-800">
