@@ -5,14 +5,16 @@ import Table from "./table";
 
 const baseURL = "https://pokeapi.co/api/v2";
 
+type Pokemon = {
+  name: string;
+  url: string;
+};
+
 type PokeapiResponse = {
   count: number;
   next: string;
   previous: null;
-  results: {
-    name: string;
-    url: string;
-  }[];
+  results: Pokemon[];
 };
 
 const fetchData = async (
@@ -29,20 +31,11 @@ const fetchData = async (
 
 const ConnectedTable: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [localData, setLocalData] = useState<
-    | {
-        name: string;
-        url: string;
-      }[]
-    | null
-  >(null);
+  const [localData, setLocalData] = useState<Pokemon[] | null>(null);
 
   const { data } = useQuery<PokeapiResponse>(
     [`table-data-${searchParams?.toString()}`],
-    () => fetchData(searchParams),
-    {
-      refetchOnWindowFocus: false,
-    }
+    () => fetchData(searchParams)
   );
 
   useEffect(() => {
