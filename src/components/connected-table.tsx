@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
 import Table from "./table";
 
 const baseURL = "https://pokeapi.co/api/v2";
@@ -26,11 +27,8 @@ const fetchData = async (
   return res.json();
 };
 
-type ConnectedTableProps = {
-  searchParams?: URLSearchParams;
-};
-
-const ConnectedTable: React.FC<ConnectedTableProps> = ({ searchParams }) => {
+const ConnectedTable: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [localData, setLocalData] = useState<
     | {
         name: string;
