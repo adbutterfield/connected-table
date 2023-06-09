@@ -29,7 +29,6 @@ const Form: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<SearchParams> = (data) => {
-    console.log("here!!!");
     setSearchParams({
       limit: data.limit,
       offset: String((Number(data.page) - 1) * Number(data.limit)),

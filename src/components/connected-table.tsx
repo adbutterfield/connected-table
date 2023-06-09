@@ -4,7 +4,6 @@ import Table from "./table";
 const baseURL = "https://pokeapi.co/api/v2";
 
 const fetchData = async (searchParams?: URLSearchParams) => {
-  console.log(searchParams?.toString());
   const res = await fetch(
     `${baseURL}/pokemon${searchParams ? `?${searchParams?.toString()}` : ""}`
   );
