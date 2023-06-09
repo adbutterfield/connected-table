@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
-import Table from "./table";
+import Table from "./Table";
 
 const baseURL = "https://pokeapi.co/api/v2";
 

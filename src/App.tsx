@@ -1,5 +1,5 @@
-import Form from "./components/form";
-import ConnectedTable from "./components/connected-table";
+import Form from "./components/Form";
+import ConnectedTable from "./components/ConnectedTable";
 
 export default function App() {
   return (
