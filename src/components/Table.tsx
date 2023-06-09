@@ -2,12 +2,11 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  ColumnDef,
 } from "@tanstack/react-table";
 
 type TableProps<T> = {
   data: T[] | null;
-  columns: ColumnDef<T, any>[];
+  columns: Columns<T>;
 };
 
 function Table<T>({ data, columns }: TableProps<T>) {
