@@ -7,12 +7,14 @@ type ConnectedTableProps<T, R> = {
   columns: Columns<T>;
   fetchData: FetchData<R>;
   getDataFromResponse: GetDataFromResponse<T, R>;
+  queryKey: string;
 };
 
 function ConnectedTable<T, R>({
   columns,
   fetchData,
   getDataFromResponse,
+  queryKey,
 }: ConnectedTableProps<T, R>) {
   /**
    * Changes to searchParams will cause the component to re-render.
@@ -25,8 +27,9 @@ function ConnectedTable<T, R>({
   const [searchParams] = useSearchParams();
   const [localData, setLocalData] = useState<T[] | null>(null);
 
-  const { data } = useQuery<R>([`table-data-${searchParams?.toString()}`], () =>
-    fetchData(searchParams)
+  const { data } = useQuery<R>(
+    [`${queryKey}-${searchParams?.toString()}`],
+    () => fetchData(searchParams)
   );
 
   useEffect(() => {

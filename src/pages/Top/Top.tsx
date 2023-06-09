@@ -11,6 +11,7 @@ export default function App() {
         columns={columns}
         fetchData={getPokemon}
         getDataFromResponse={getDataFromResponse}
+        queryKey="get-pokemon"
       />
     </>
   );
