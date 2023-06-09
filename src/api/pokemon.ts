@@ -1,6 +1,6 @@
 const baseURL = "https://pokeapi.co/api/v2";
 
-export const fetchData: FetchData<PokeapiResponse> = async (
+export const getPokemon: FetchData<PokeapiResponse> = async (
   searchParams?: URLSearchParams
 ) => {
   const res = await fetch(

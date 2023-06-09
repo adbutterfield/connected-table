@@ -1,7 +1,7 @@
 import Form from "../../components/Form";
 import ConnectedTable from "../../components/ConnectedTable";
 import columns from "./columns";
-import { fetchData, getDataFromResponse } from "../../api/pokemon";
+import { getPokemon, getDataFromResponse } from "../../api/pokemon";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       <Form />
       <ConnectedTable<Pokemon, PokeapiResponse>
         columns={columns}
-        fetchData={fetchData}
+        fetchData={getPokemon}
         getDataFromResponse={getDataFromResponse}
       />
     </>
