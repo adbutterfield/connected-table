@@ -21,10 +21,10 @@ const Form: React.FC = () => {
     resolver: zodResolver(schema),
     defaultValues: {
       limit: searchParams.get("limit") || "20",
-      page:
-        String(
-          Number(searchParams.get("offset")) / Number(searchParams.get("limit"))
-        ) || "1",
+      page: String(
+        Number(searchParams.get("offset")) /
+          Number(searchParams.get("limit")) || 1
+      ),
     },
   });
 
