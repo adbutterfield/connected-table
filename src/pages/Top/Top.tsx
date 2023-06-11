@@ -3,7 +3,7 @@ import ConnectedTable from "../../components/ConnectedTable";
 import columns from "./pokemon-table-columns";
 import { getPokemon, getDataFromResponse } from "../../api/pokemon";
 
-export default function App() {
+export default function TopPage() {
   return (
     <>
       <Form />
